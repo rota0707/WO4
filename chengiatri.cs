@@ -21,27 +21,31 @@ namespace Wo2
             Console.WriteLine("Nhập vị trí cần chèn giá tri:");
 
             int x = int.Parse(Console.ReadLine());
-            int[] arrays;
-      
-            for(int i = 0; i < array.Length; i++)
+            int[] arrays=new int[array.Length+1];
+
+           if(x<0 || x > array.Length-1)
             {
-              
-                if (x < 1 || x > array.Length)
-                {
-                    Console.WriteLine("Không chèn đk phần tử trong mảng");
-                    break;
-                }
-                else
-                {
-                    array[x - 1] = x;
-                }
-
-
+                Console.WriteLine("không chèn được");
             }
-            Console.WriteLine("Mảng giá tri mới:");
-            for (int i = 0; i < array.Length; i++)
+            else
             {
-                Console.Write(array[i] + " ");
+                for (int i = 0; i < x; i++)
+                {
+
+                    arrays[i] = array[i];
+
+                }
+                arrays[x] = x;
+                for (int i = x +1; i < arrays.Length; i++)
+                {
+                    arrays[i] = array[i - 1];
+                }
+                Console.WriteLine("Mảng giá tri :");
+                for (int i = 0; i < arrays.Length; i++)
+                {
+                    Console.Write(arrays[i] + " ");
+                }
+
             }
 
             Console.ReadKey();
